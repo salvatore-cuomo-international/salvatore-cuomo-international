@@ -203,12 +203,27 @@
   .slide:last-child{margin-bottom:0!important}
   @media screen and (max-width:1279px){
     body{padding:0!important;width:100%!important}
-    .slide{margin:0 0 calc(-720px + 56.25vw + 24px)!important;transform:scale(calc(100vw / 1280));transform-origin:top left;border-radius:0!important}
-    .slide:last-child{margin-bottom:calc(-720px + 56.25vw)!important}
+    .slide{margin:0 0 calc(-720px + var(--mobile-slide-height, 202.5px) + 24px)!important;transform:scale(var(--mobile-slide-scale, .28125));transform-origin:top left;border-radius:0!important}
+    .slide:last-child{margin-bottom:calc(-720px + var(--mobile-slide-height, 202.5px))!important}
   }
 </style>
 </head>
 <body id="artifacts-component-root-html">
+
+<script>
+  (function () {
+    function fitSlidesToViewport() {
+      var viewportWidth = document.documentElement.clientWidth || window.innerWidth || 1280;
+      var scale = Math.min(1, viewportWidth / 1280);
+      document.documentElement.style.setProperty('--mobile-slide-scale', String(scale));
+      document.documentElement.style.setProperty('--mobile-slide-height', (720 * scale) + 'px');
+    }
+    fitSlidesToViewport();
+    window.addEventListener('resize', fitSlidesToViewport, { passive: true });
+    window.addEventListener('orientationchange', fitSlidesToViewport, { passive: true });
+    window.addEventListener('pageshow', fitSlidesToViewport, { passive: true });
+  })();
+</script>
 
 <!-- P1 COVER -->
 <section class="slide cover">
