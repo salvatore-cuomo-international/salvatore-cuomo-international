@@ -203,7 +203,8 @@
   .slide:last-child{margin-bottom:0!important}
   @media screen and (max-width:1279px){
     body{padding:0!important;width:100%!important}
-    .slide{margin:0 0 calc(-720px + var(--mobile-slide-height, 202.5px) + 24px)!important;transform:scale(var(--mobile-slide-scale, .28125));transform-origin:top left;border-radius:0!important}
+    .slide{transform:scale(var(--mobile-slide-scale, .28125));transform-origin:top left;border-radius:0!important}
+    .slide:not(:last-child){margin:0 0 calc(-720px + var(--mobile-slide-height, 202.5px) + 24px)!important}
     .slide:last-child{margin-bottom:calc(-720px + var(--mobile-slide-height, 202.5px))!important}
   }
 </style>
