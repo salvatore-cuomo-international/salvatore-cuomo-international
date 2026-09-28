@@ -15,12 +15,14 @@
 html{-webkit-text-size-adjust:none;text-size-adjust:none;overflow-x:hidden;background:#352F27}
 body{background:#352F27;color:var(--ink2);overflow-x:hidden;
   font-family:"Noto Sans CJK JP","Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
-  counter-reset:pg;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding-top:56px}
+  counter-reset:pg;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding-top:0}
+body.edit-mode{padding-top:56px}
 .mincho{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho ProN",serif}
 
 /* toolbar */
 .toolbar{position:fixed;z-index:60;left:0;right:0;top:0;min-height:56px;background:#241F1A;color:#F4EFE2;
-  display:flex;align-items:center;gap:8px;padding:9px 20px;flex-wrap:wrap}
+  display:none;align-items:center;gap:8px;padding:9px 20px;flex-wrap:wrap}
+body.edit-mode .toolbar{display:flex}
 .toolbar strong{margin-right:auto;font:700 11px/1 Arial;letter-spacing:.2em;color:var(--goldl)}
 .toolbar button,.toolbar select,.toolbar input{height:32px;border:1px solid #6E5F45;background:#FCFAF4;color:#2B2721;
   border-radius:999px;padding:0 14px;font-weight:700;font-size:13px;cursor:pointer}
@@ -477,6 +479,8 @@ h1.title{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho
 </main>
 
 <script>
+const editMode=new URLSearchParams(location.search).get('edit')==='1';
+if(editMode)document.body.classList.add('edit-mode');
 const deck=document.getElementById('deck'),toolbar=document.getElementById('toolbar'),
  edit=document.getElementById('edit'),status=document.getElementById('status');
 let editing=false,savedRange=null;
