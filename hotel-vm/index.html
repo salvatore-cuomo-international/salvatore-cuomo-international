@@ -38,7 +38,7 @@ body.edit-mode .toolbar{display:flex}
 .slide{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--cream);
   counter-increment:pg;margin:0 0 26px;outline:1px solid rgba(112,88,48,.30);box-shadow:0 10px 30px rgba(20,15,10,.30)}
 .slide:last-child{margin-bottom:0}
-.slide::before{content:"PAGE " counter(pg) " / 12";position:absolute;right:22px;bottom:16px;z-index:8;
+.slide::before{content:"PAGE " counter(pg) " / 14";position:absolute;right:22px;bottom:16px;z-index:8;
   font:400 11px/1 Arial;letter-spacing:.16em;color:#6B6152;background:rgba(244,239,226,.88);
   padding:4px 11px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.10)}
 
@@ -143,10 +143,10 @@ h1.title{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho
 
 
 /* product ledger — single column, 5 rows */
-.ledger1{display:grid;grid-auto-rows:1fr;flex:1;margin-top:6px;border-top:1px solid var(--line)}
+.ledger1{display:grid;grid-auto-rows:auto;margin-top:10px;border-top:1px solid var(--line)}
 .lg1{display:grid;grid-template-columns:120px 1fr 150px 170px;gap:26px;align-items:center;
-  padding:10px 0;border-bottom:1px solid var(--line)}
-.lg1 .art{width:120px;height:82px;display:flex;align-items:center;justify-content:center}
+  padding:12px 0;border-bottom:1px solid var(--line)}
+.lg1 .art{width:120px;height:60px;display:flex;align-items:center;justify-content:center}
 .lg1 .art img{max-width:100%;max-height:100%;object-fit:contain}
 .lg1 .art .txt{font:700 11px/1 Arial;letter-spacing:.2em;color:var(--goldl);border:1px solid var(--line);
   border-radius:10px;padding:14px 12px;background:var(--panel)}
@@ -170,6 +170,16 @@ h1.title{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho
 .cost:not(.main) .ci{display:block;color:var(--muted);font-size:13px;line-height:1.7}
 .cost .ci b{color:#EBD6AC}
 
+/* cost detail — moved outside the cards, larger and readable */
+.cost-detail{display:flex;gap:30px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.cd-col{flex:1}
+.cd-col:first-child{flex:1.6}
+.cd-h{font:700 12px/1 Arial;letter-spacing:.13em;color:var(--gold);margin-bottom:10px}
+.cd-row{display:flex;justify-content:space-between;align-items:baseline;font-size:15.5px;line-height:1.95;color:var(--ink2)}
+.cd-row span:last-child{font-weight:700;color:var(--ink)}
+.cd-row.total{border-top:1px solid var(--line);margin-top:4px;padding-top:8px}
+.cd-row.total span{color:var(--deep);font-weight:700}
+
 .share{display:flex;align-items:center;gap:24px;margin-top:16px;padding:16px 24px;
   background:var(--beige);border-left:4px solid var(--gold);border-radius:8px}
 .share .lb{flex:none;font-family:"Noto Serif CJK JP","Yu Mincho","Hiragino Mincho ProN",serif;font-size:15px;font-weight:700;line-height:1.5;color:var(--gold)}
@@ -178,11 +188,49 @@ h1.title{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho
 .share .sb{font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:5px}
 .share .sim{margin-left:auto;text-align:right;font-size:13px;line-height:1.7;color:var(--ink2);white-space:nowrap}
 .share .sim b{color:var(--deep)}
+
+/* hotel-share simulation — large balanced cards */
+.hs{margin-top:26px}
+.hs-head{display:flex;align-items:baseline;gap:14px}
+.hs-head .lb{font:700 12px/1 Arial;letter-spacing:.14em;color:var(--gold)}
+.hs-head .sb{font-size:13.5px;color:var(--muted)}
+.hs-grid{display:flex;gap:18px;margin-top:16px}
+.hs-card{flex:1;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--goldl);border-radius:14px;padding:26px 10px;text-align:center}
+.hs-card .rev{font-size:14px;color:var(--muted);margin-bottom:12px}
+.hs-card .amt{font-family:Georgia,serif;font-size:32px;font-weight:700;color:var(--deep);line-height:1}
+.hs-card .amt strong{color:var(--goldl)}
+.hs-card .amt small{font-size:14px;font-weight:700;margin-right:2px}
+
+/* hotel-share breakdown — dedicated large page, 3 cases */
+.hs3-grid{display:flex;gap:22px;margin-top:28px}
+.hs3-card{flex:1;background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--goldl);border-radius:16px;padding:28px 24px}
+.hs3-card .rev{font-family:Georgia,serif;font-size:22px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:18px}
+.hs3-row{display:flex;justify-content:space-between;align-items:baseline;font-size:17px;color:var(--ink2);padding:7px 0}
+.hs3-row .k{color:var(--muted)}
+.hs3-row .v{font-family:Georgia,serif;font-weight:700}
+.hs3-div{border-top:1px solid var(--line);margin:8px 0}
+.hs3-sub{display:flex;justify-content:space-between;align-items:baseline;font-size:19px;font-weight:700;color:var(--ink);padding:9px 0}
+.hs3-final{margin-top:14px;padding-top:16px;border-top:2px solid var(--gold);text-align:center}
+.hs3-final .lb{font:700 13px/1 Arial;letter-spacing:.1em;color:var(--gold);margin-bottom:10px}
+.hs3-final .amt{font-family:Georgia,serif;font-size:46px;font-weight:700;color:var(--deep)}
+.hs3-note{font-size:14px;line-height:1.8;color:var(--muted);margin-top:22px}
+
 .paid{display:flex;gap:34px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .paid .lb{font:700 12px/1 Arial;letter-spacing:.13em;color:var(--gold);margin-bottom:8px}
 .paid .am{font-family:Georgia,serif;font-size:25px;font-weight:700;color:var(--deep)}
 .paid .am small{font:700 12px/1 Arial;color:var(--muted)}
-.paid p{font-size:13px;line-height:1.65;color:var(--muted);margin-top:7px}
+.paid p{font-size:16.5px;line-height:1.85;color:var(--muted);margin-top:9px}
+.paid .opt-list{list-style:none;margin-top:9px}
+.paid .opt-list li{position:relative;padding-left:17px;font-size:16.5px;line-height:1.7;color:var(--ink2);margin-bottom:5px}
+.paid .opt-list li::before{content:"";position:absolute;left:1px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--goldl)}
+.paid .opt-note{font-size:13px;line-height:1.6;color:var(--muted);margin-top:8px}
+
+/* terms (warranty / cancellation — large, spacious) */
+.terms{margin-top:26px;display:flex;flex-direction:column;gap:22px}
+.terms .t{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--goldl);border-radius:14px;padding:26px 32px}
+.terms .t .tl{font:700 13px/1 Arial;letter-spacing:.14em;color:var(--gold);margin-bottom:14px}
+.terms .t .tx{font-size:17px;line-height:1.95;color:var(--ink2)}
+.terms .t .tx b{color:var(--ink);font-weight:700}
 
 /* 3-column band */
 .band{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;border-top:1px solid var(--line)}
@@ -339,7 +387,7 @@ h1.title{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho
 
 <!-- 07 PRODUCT RANGE -->
 <section class="slide" style="background:var(--ivory)">
-  <div class="full-content">
+  <div class="full-content" style="justify-content:center">
     <div class="eyebrow">Product Range ｜ 商品ラインナップ</div>
     <h1 class="title" style="font-size:34px">提供シーンに合わせて、商品を選べます。</h1>
     <p class="lead" style="margin-top:14px">ラインナップはホテルごとに選択・調整可能。</p>
@@ -366,42 +414,105 @@ h1.title{font-family:"Noto Serif CJK JP","Yu Mincho","YuMincho","Hiragino Mincho
 
 <!-- 08 COMMERCIAL MODEL -->
 <section class="slide">
-  <div class="full-content">
+  <div class="full-content" style="justify-content:center">
     <div class="eyebrow">Commercial Model ｜ 費用と収益</div>
-    <h1 class="title" style="font-size:32px">導入設備費0円。ホテルには、粗利の30％を還元。</h1>
+    <div style="font-size:15px;color:var(--muted);margin-bottom:10px">続いて、導入にかかる費用についてご説明します。</div>
+    <h1 class="title" style="font-size:32px">自販機<strong>本体代金は、0円</strong>。</h1>
     <div class="hair" style="margin:16px 0 0"></div>
     <div class="cost-grid">
       <div class="cost main">
-        <div class="cl">INITIAL EQUIPMENT COST ｜ 初期設備費</div>
-        <div class="cv">¥1,450,000<span class="ar">→</span><strong>¥0</strong></div>
-        <div class="ci">
-          <span>自販機本体 <b>120万円 → 0円</b></span>
-          <span>設置工事 <b>5万円 → 0円</b></span>
-          <span>決済端末導入 <b>10万円 → 0円</b></span>
-          <span>自販機保険・5年 <b>10万円 → 0円</b></span>
-        </div>
+        <div class="cl">自販機本体代金 ｜ MACHINE COST</div>
+        <div class="cv">¥1,200,000<span class="ar">→</span><strong>¥0</strong></div>
       </div>
       <div class="cost">
         <div class="cl">MONTHLY SYSTEM COST ｜ 月額</div>
         <div class="cv">¥7,500<span class="ar">→</span><strong>¥0</strong></div>
-        <div class="ci">決済端末利用料 月5,000円<br/>＋ 売上集計機能 月2,500円</div>
       </div>
     </div>
-    <div class="share">
-      <div class="lb">ホテルへの<br/>還元<span style="display:block;font-size:10px;letter-spacing:.18em;color:var(--goldl);margin-top:5px">HOTEL SHARE</span></div>
-      <div>
-        <div class="mn">粗利の <strong>30%</strong> をホテルへ還元</div>
-        <div class="sb">粗利 ＝ 売上 − 商品原価 − 自販機減価償却 5万円</div>
+    <div class="cost-detail">
+      <div class="cd-col">
+        <div class="cd-h">初期費用の内訳</div>
+        <div class="cd-row"><span>自販機本体</span><span>120万円 → 0円</span></div>
+        <div class="cd-row"><span>決済端末導入</span><span>10万円 → 0円</span></div>
+        <div class="cd-row"><span>自販機保険・5年</span><span>10万円 → 0円</span></div>
+        <div class="cd-row total"><span>初期費用合計</span><span>140万円 → 0円</span></div>
       </div>
-      <div class="sim">ホテル取り分の試算<br/><b>売上30万円 → ¥26,154 ／ 売上40万円 → ¥40,000</b></div>
+      <div class="cd-col">
+        <div class="cd-h">月額費用の内訳</div>
+        <div class="cd-row"><span>決済端末利用料</span><span>月5,000円</span></div>
+        <div class="cd-row"><span>売上集計機能</span><span>月2,500円</span></div>
+      </div>
     </div>
-    <div class="paid">
-      <div style="flex:0 0 310px"><div class="lb">REQUIRED COST ｜ 必要費用</div>
+  </div>
+  <div class="conf" style="left:62px">CONFIDENTIAL ｜ SALVATORE CUOMO INTERNATIONAL</div>
+</section>
+
+<!-- 08A HOTEL SHARE BREAKDOWN -->
+<section class="slide" style="background:var(--ivory)">
+  <div class="full-content" style="justify-content:center">
+    <div class="eyebrow">Hotel Share ｜ ホテルへの還元</div>
+    <h1 class="title" style="font-size:34px">売上から、ホテルへの還元額まで。</h1>
+    <p class="lead" style="margin-top:12px">商品原価・送料・自販機の減価償却費を差し引いた<span class="emphasis">粗利</span>の一部を、ホテルへ還元します。</p>
+    <div class="hs3-grid">
+      <div class="hs3-card">
+        <div class="rev">月商 ¥300,000</div>
+        <div class="hs3-row"><span class="k">－ 商品原価・送料</span><span class="v">¥165,000</span></div>
+        <div class="hs3-row"><span class="k">－ 自販機 減価償却費</span><span class="v">¥50,000</span></div>
+        <div class="hs3-div"></div>
+        <div class="hs3-sub"><span>＝ 粗利</span><span>¥85,000</span></div>
+        <div class="hs3-final"><div class="lb">ホテルへの還元額</div><div class="amt">約¥26,000</div></div>
+      </div>
+      <div class="hs3-card">
+        <div class="rev">月商 ¥400,000</div>
+        <div class="hs3-row"><span class="k">－ 商品原価・送料</span><span class="v">¥220,000</span></div>
+        <div class="hs3-row"><span class="k">－ 自販機 減価償却費</span><span class="v">¥50,000</span></div>
+        <div class="hs3-div"></div>
+        <div class="hs3-sub"><span>＝ 粗利</span><span>¥130,000</span></div>
+        <div class="hs3-final"><div class="lb">ホテルへの還元額</div><div class="amt">約¥40,000</div></div>
+      </div>
+      <div class="hs3-card">
+        <div class="rev">月商 ¥500,000</div>
+        <div class="hs3-row"><span class="k">－ 商品原価・送料</span><span class="v">¥275,000</span></div>
+        <div class="hs3-row"><span class="k">－ 自販機 減価償却費</span><span class="v">¥50,000</span></div>
+        <div class="hs3-div"></div>
+        <div class="hs3-sub"><span>＝ 粗利</span><span>¥175,000</span></div>
+        <div class="hs3-final"><div class="lb">ホテルへの還元額</div><div class="amt">約¥53,000</div></div>
+      </div>
+    </div>
+    <p class="hs3-note">※ 商品原価・送料は売上の55%（原価率45%＋送料10%）として試算。月商50万円のケースは試算値です。</p>
+  </div>
+  <div class="conf" style="left:62px">CONFIDENTIAL ｜ SALVATORE CUOMO INTERNATIONAL</div>
+</section>
+
+<!-- 08B COST & WARRANTY -->
+<section class="slide" style="background:var(--ivory)">
+  <div class="full-content" style="justify-content:center">
+    <div class="eyebrow">Cost &amp; Warranty ｜ 費用と保証</div>
+    <h1 class="title" style="font-size:32px">導入にあたり、必要な費用と保証。</h1>
+    <div class="hair" style="margin:16px 0 0"></div>
+    <div class="paid" style="border-top:0;padding-top:0">
+      <div style="flex:1">
+        <div class="lb">CONSULTING FEE ｜ 設置費・コンサルティングフィー</div>
         <div class="am">¥300,000 <small>（税抜）</small></div>
-        <p>コンサルティングフィー（ラッピング費用込み）<br/>商品選定・立ち上げ・運用設計・導入後支援</p></div>
-      <div style="flex:1"><div class="lb">OPTIONAL EQUIPMENT ｜ 任意設備</div>
-        <p>4枚焼きトースター2台 約4万円 ／ 500L以上の冷凍ストッカー 約10万円 ／ ピザカッター・消耗品 実費<br/>既存設備を利用できる場合は購入不要です。</p></div>
+        <p>商品選定・立ち上げ・運用設計・導入後支援、ラッピング費用込み。設置場所の客層に合わせた商品構成のご相談、ホテル限定の特別メニュー開発にも対応します。</p>
+      </div>
+      <div style="flex:1">
+        <div class="lb">OPTIONAL EQUIPMENT ｜ 任意設備</div>
+        <ul class="opt-list">
+          <li>4枚焼きトースター2台　約4万円</li>
+          <li>500L以上の冷凍ストッカー　約10万円</li>
+          <li>ピザカッター・消耗品　実費</li>
+        </ul>
+        <p class="opt-note">既存設備を利用できる場合は購入不要です。</p>
+      </div>
     </div>
+    <div class="terms" style="margin-top:20px">
+      <div class="t">
+        <div class="tl">WARRANTY ｜ 自販機のメーカー保証</div>
+        <div class="tx">自販機本体は<b>サンデンリテールシステム製</b>。保証内容・保証期間は、購入時に付属する保証書の記載に基づきます。<br/>【要確認：保証書原本をもとに、保証期間・無償修理の対象範囲を確認のうえ記載します】</div>
+      </div>
+    </div>
+    <p style="font-size:11.5px;line-height:1.7;color:var(--muted);margin-top:14px">※ 万一、月間売上が3か月連続して10万円を下回るなど、採算の確保が難しい状態が続いた場合には、あらかじめ書面にてご連絡のうえ、設置の見直し（撤去や他施設への移設）についてご相談させていただくことがございます。</p>
   </div>
   <div class="conf" style="left:62px">CONFIDENTIAL ｜ SALVATORE CUOMO INTERNATIONAL</div>
 </section>
